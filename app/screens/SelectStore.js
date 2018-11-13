@@ -156,24 +156,29 @@ export default class SelectStore extends Component{
 						</Col>
 					</Row>
 				</Content>
-				<View style={{ flex: 1 }}>
-		          <Fab
-		            containerStyle={{ }}
-		            style={{ backgroundColor: '#02A6A4' }}
-		            position="bottomRight"
-		            onPress={() =>  this.props.navigation.navigate(`RegisterScreen`, { user: this.state.user }) }>
-		            <Text style={{color:"#ffffff", fontSize: 20}}>
-		            	<FontAwesome style={{color:"#ffffff", fontSize: 20}}>{Icons.plus}</FontAwesome>
-		            </Text>
-		          </Fab>
-		        </View>
-					<View style={{ alignSelf: "center",alignContent: "center", alignItems: "center", flex: 0.1, left: 0, right: 0 ,position: "relative", bottom: 0, flexDirection: 'row', alignItems: "center" ,marginBottom : 0}}>
-						<View style={{flex: 0.8, alignSelf: "center",alignContent: "center", alignItems: "center"}}>
-							<TouchableOpacity onPress={()=>{this.close()}}>
-								<Text style={{color: "#ffffff", alignText: "center"}} > CERRAR SESION</Text>
-							</TouchableOpacity>
-						</View>
+
+				{
+					this.state.user && this.state.user.role == 'store_admin' &&
+					<View style={{ flex: 1 }}>
+		        <Fab
+		          containerStyle={{ }}
+		          style={{ backgroundColor: '#02A6A4' }}
+		          position="bottomRight"
+		          onPress={() =>  this.props.navigation.navigate(`RegisterScreen`, { user: this.state.user }) }>
+		          <Text style={{color:"#ffffff", fontSize: 20}}>
+		          	<FontAwesome style={{color:"#ffffff", fontSize: 20}}>{Icons.plus}</FontAwesome>
+		          </Text>
+		        </Fab>
+		    	</View>
+	    	}
+
+				<View style={{ alignSelf: "center",alignContent: "center", alignItems: "center", flex: 0.1, left: 0, right: 0 ,position: "relative", bottom: 0, flexDirection: 'row', alignItems: "center" ,marginBottom : 0}}>
+					<View style={{flex: 0.8, alignSelf: "center",alignContent: "center", alignItems: "center"}}>
+						<TouchableOpacity onPress={()=>{this.close()}}>
+							<Text style={{color: "#ffffff"}} > CERRAR SESION</Text>
+						</TouchableOpacity>
 					</View>
+				</View>
 			</View>
 		);
 	}

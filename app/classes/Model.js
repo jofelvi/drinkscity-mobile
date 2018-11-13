@@ -223,7 +223,63 @@ export default class Model{
 		});
 
 		store.dispatch(modelActions(req, this._model));
-	}	
+	}
+
+
+	async getAllRrpp(navigation = null){
+
+		let session = await AsyncStorage.getItem("@session");
+		let token = await JSON.parse(session);
+		// let user = await JSON.parse(session);
+
+		// alert(token.user.id);
+
+		const con = new Connection();
+		let url = con.getUrlApi('rrpp_events');
+		let req = await fetch(`${url}?user_id=${token.user.id}`, {
+			method: 'GET',
+			headers: {
+				Accept: 'application/json',
+				Authorization: token.token
+			}
+		}).then( resp =>{
+			if(resp.status == 200 || resp.status == '200'){
+				//Alert.alert("RESPOSE", resp._bodyInit);
+				return JSON.parse(resp._bodyInit);
+			}
+			navigation.navigate('RootScreen')
+
+		});
+
+		store.dispatch(modelActions(req, 'rrpp_events'));
+	}
+
+	async getAllGuests(navigation = null, event_id){
+
+		let session = await AsyncStorage.getItem("@session");
+		let token = await JSON.parse(session);
+
+		const con = new Connection();
+		let url = con.getUrlApi('guests');
+		let req = await fetch(`${url}?event_id=${event_id}`, {
+			method: 'GET',
+			headers: {
+				Accept: 'application/json',
+				Authorization: token.token
+			}
+		}).then( resp =>{
+			if(resp.status == 200 || resp.status == '200'){
+				// Alert.alert("RESPOSE", resp._bodyInit);
+				return JSON.parse(resp._bodyInit);
+			}
+			navigation.navigate('RootScreen')
+
+		});
+
+		store.dispatch(modelActions(req, 'guests'));
+	}
+
+
 
 	async delete(method = 'DELETE', navigation = null){
 

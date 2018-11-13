@@ -180,7 +180,7 @@ export default class ListaEventos extends React.Component{
 										</Text>
 										<Text selectable={true} style={{color: "#ffffff",textAlign: "center", width: "100%", fontSize: 17,}}>
 											{tipos[data.data.category]}
-										</Text>							
+										</Text>
 									</Col>
 								</CardItem>
 							</Card>

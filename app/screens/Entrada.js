@@ -76,6 +76,7 @@ export default class Entrada extends React.Component{
 			ref_enddatetime: null,
 			event: null,
 			savePress: false,
+			price: 0.00,
 			start_date: moment((new Date()), 'YYYY-MM-DD').format('YYYY-MM-DD'),
 			end_date: moment((new Date()), 'YYYY-MM-DD').format('YYYY-MM-DD'),
 		};
@@ -135,7 +136,18 @@ export default class Entrada extends React.Component{
 		let session = await AsyncStorage.getItem('@session');
 		let { token } = await JSON.parse(session);
 
-		let body= `{ "ticket": { "name": "${this.state.name}", "start_date": "${this.state.start_date}", "end_date": "${this.state.end_date}", "price": ${this.state.price}, "stock": ${this.state.stock}, "event_id": ${event.data.id}, "users": ${JSON.stringify(this.state.selectedItems)} } } `;
+		// let body= `{ "ticket": { "name": "${this.state.name}", "start_date": "${this.state.start_date}", "end_date": "${this.state.end_date}", "price": ${this.state.price}, "stock": ${this.state.stock}, "event_id": ${event.data.id}, "users": ${JSON.stringify(this.state.selectedItems)} } } `;
+		let body = {
+			ticket: {
+				name: this.state.name,
+				start_date: this.state.start_date,
+				end_date: this.state.end_date,
+				price: this.state.price,
+				stock: this.state.stock,
+				event_id: event.data.id,
+				users: this.state.selectedItems
+			}
+		}
 		let request =await fetch( con.getUrlApi('tickets'), {
 			method: 'POST',
 			headers: {
@@ -143,9 +155,9 @@ export default class Entrada extends React.Component{
 				'Content-Type': 'application/json',
 				Accept: 'json'
 			},
-			body
+			body: JSON.stringify(body)
 		} ).then(resp => {
-			if(resp.status == 200 || resp.status== '200' || resp.status == 201 || resps.status == '201'){
+			if(resp.status == 200 || resp.status== '200' || resp.status == 201 || resp.status == '201'){
 				Alert.alert('Confirmacion', 'La entrada ha sido creada de manera correcta',[
 					{
 						text: 'Aceptar',

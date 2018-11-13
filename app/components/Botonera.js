@@ -36,7 +36,9 @@ export default class Botonera extends React.Component{
 
 	render(){
 
+		let invitados = null;
 		let cmr = null;
+		let rrpp_eventos = null;
 		let qr = null;
 		let s = null;
 		let productos = null;
@@ -46,7 +48,7 @@ export default class Botonera extends React.Component{
 		let mis_eventos = null;
 		let ventas = null;
 		if( this.state.user !== null ){
-			if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin' || this.state.user.role == 'rrpp'  ){
+			if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin' ){
 				cmr = (
 					<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('Videos') }} style={{alignSelf: "center", alignItems: "center", alignContent: "center", marginBottom: "7%"}}>
 						<BackgroundButton 
@@ -59,7 +61,7 @@ export default class Botonera extends React.Component{
 					</TouchableOpacity>	
 				)
 			}
-			if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin' || this.state.user.role == 'rrpp'  ){
+			if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin' ){
 				qr = (
 					<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('QRScanner') }} style={{marginBottom: "7%"}}>
 						<BackgroundButton 
@@ -130,7 +132,19 @@ export default class Botonera extends React.Component{
 				);
 			}
 
-			if( this.state.user.role == 'store_admin' || this.state.user.role == 'rrpp'){
+			if(this.state.user.role == 'rrpp'){
+				rrpp_eventos = (
+								<TouchableOpacity onPress={()=> { this.props.navigation.navigate('RrppEventos',{titulo: 'Listado de eventos publicados', side: 'Home', event: false}) } }>
+									<BackgroundButton 
+										imagen={require('../assets/img/banda.png')} 
+										text={'MIS EVENTOS'} 
+										font_size={17}
+									/>
+								</TouchableOpacity>
+				);
+			}
+
+			if( this.state.user.role == 'store_admin'){
 				mis_eventos = (
 								<TouchableOpacity onPress={()=> { this.props.navigation.navigate('Eventos',{titulo: 'Listado de eventos publicados', side: 'Home', event: false}) } }>
 									<BackgroundButton 
@@ -198,6 +212,12 @@ export default class Botonera extends React.Component{
 							<Row style={{alignContent: "center", alignItems: "center"}}>
 								{eventos}
 							</Row>
+
+
+							<Row style={{alignContent: "center", alignItems: "center"}}>
+								{rrpp_eventos}
+							</Row>
+
 							<Row style={{alignContent: "center", alignItems: "center",  marginTop: "9%"}}>
 								{mis_eventos}
 							</Row>

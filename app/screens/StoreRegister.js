@@ -383,7 +383,7 @@ export default class StoreRegister extends React.Component{
 									<Col style={{width: "95%"}}>
 									<Item stackedLabel>
 										<Label style={{color: "#ffffff"}}>Lunes</Label> 
-										<Input onChangeText={ value => { this._onDaysInputChange( text, 'lun' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'lun' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
 									</Item>
 									</Col>
 								</Row>
@@ -391,7 +391,7 @@ export default class StoreRegister extends React.Component{
 									<Col style={{width: "95%"}}>
 									<Item stackedLabel>
 										<Label style={{color: "#ffffff"}}>Martes</Label> 
-										<Input onChangeText={ value => { this._onDaysInputChange( text, 'mar' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'mar' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
 									</Item>
 									</Col>
 								</Row>
@@ -399,7 +399,7 @@ export default class StoreRegister extends React.Component{
 									<Col style={{width: "95%"}}>
 									<Item stackedLabel>
 										<Label style={{color: "#ffffff"}}>Miercoles</Label> 
-										<Input onChangeText={ value => { this._onDaysInputChange( text, 'mier' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'mier' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
 									</Item>
 									</Col>
 								</Row>
@@ -407,7 +407,7 @@ export default class StoreRegister extends React.Component{
 									<Col style={{width: "95%"}}>
 									<Item stackedLabel>
 										<Label style={{color: "#ffffff"}}>Jueves</Label> 
-										<Input onChangeText={ value => { this._onDaysInputChange( text, 'juev' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'juev' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
 									</Item>
 									</Col>
 								</Row>
@@ -415,7 +415,7 @@ export default class StoreRegister extends React.Component{
 									<Col style={{width: "95%"}}>
 									<Item stackedLabel>
 										<Label style={{color: "#ffffff"}}>Viernes</Label> 
-										<Input onChangeText={ value => { this._onDaysInputChange( text, 'vier' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"}  />
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'vier' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"}  />
 									</Item>
 									</Col>
 								</Row>
@@ -423,7 +423,7 @@ export default class StoreRegister extends React.Component{
 									<Col style={{width: "95%"}}>
 									<Item stackedLabel>
 										<Label style={{color: "#ffffff"}}>Sabado</Label> 
-										<Input onChangeText={ value => { this._onDaysInputChange( text, 'sab' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"}  />
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'sab' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"}  />
 									</Item>
 									</Col>
 								</Row>
@@ -431,7 +431,7 @@ export default class StoreRegister extends React.Component{
 									<Col style={{width: "95%"}}>
 									<Item stackedLabel>
 										<Label style={{color: "#ffffff"}}>Domingo</Label> 
-										<Input onChangeText={ value => { this._onDaysInputChange( text, 'dom' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'dom' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
 									</Item>
 									</Col>
 								</Row>

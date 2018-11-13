@@ -10,9 +10,11 @@ import QRScaner from '../screens/QRScaner';
 import Streaming from '../screens/Streaming';
 import onQRScann from '../screens/onQRScann';
 import Videos from '../screens/Videos';
+import Invitados from '../screens/Invitados'
 import ListFormsEvents from '../screens/ListFormsEvents';
 import Login from '../screens/Login';
 import ListaEventos from '../screens/ListaEventos';
+import RrppListaEventos from '../screens/RrppListaEventos';
 import Graphics from '../screens/Graphics';
 import Splash from '../screens/Splash';
 import SlideScreen from '../screens/SlideScreen';
@@ -27,6 +29,7 @@ import DetallesVentas from './DetallesVentas';
 import { Platform, StatusBar } from 'react-native';
 
 import FormEvent from '../components/forms/FormEvent';
+import FormGuest from '../components/forms/FormGuest';
 
 const Navigation = StackNavigator({
 	Splash: {
@@ -80,11 +83,20 @@ const Navigation = StackNavigator({
 	FormsEvents: {
 		screen: ListFormsEvents
 	},
+	FormGuest: {
+		screen: FormGuest
+	},
 	FormEvent:{
 		screen: FormEvent
 	},
 	Eventos:{
 		screen: ListaEventos
+	},
+	RrppEventos: {
+		screen: RrppListaEventos
+	},
+	Invitados:{
+		screen: Invitados
 	},
 	VentasScreen: {
 		screen: Ventas
