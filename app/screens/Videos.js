@@ -1,7 +1,8 @@
 'use strict';
 import React, { Component } from 'react';
-import { AppRegistry, Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Camera from 'react-native-camera';
+import Connection from '../config/connection'
 
 export default class BadInstagramCloneApp extends Component {
 
@@ -41,12 +42,39 @@ export default class BadInstagramCloneApp extends Component {
 
 
   async startRecording() {
+      let con = new Connection();
+      
       this.setState({ recording: true });
       // default to mp4 for android as codec is not set
-      const { uri, codec = "mp4" } = await this.camera.capture();
+      const { path } = await this.camera.capture();
+      this.setState({ recording: false, processing: true });
+      const type = `video/mp4`;
+
+      const data = new FormData();
+      data.append("video", {
+        name: "mobile-video-upload",
+        type: type,
+        uri: path
+      });
+
+      try {
+        await fetch(con.getUrlApi('upload_video'), {
+          method: "post",
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data'
+          },
+          body: data
+        });
+      } catch (e) {
+        console.log(e);
+      }
+
+      this.setState({ processing: false });
   }
 
   stopRecording() {
+      // this.setState({ recording: false });
       this.camera.stopCapture();
   }
 
@@ -91,8 +119,10 @@ export default class BadInstagramCloneApp extends Component {
           }}
           // onBarCodeRead={(e) => this._onBarCodeRead(e)}
           aspect={Camera.constants.Aspect.fill}
-          captureAudio={false}
+          captureAudio={true}
+          captureTarget={Camera.constants.CaptureTarget.cameraRoll}
           captureMode={Camera.constants.CaptureMode.video}
+          playSoundOnCapture={true}
           style={styles.preview}>
           {/*<Text style={styles.capture} onPress={() => this._takePicture()}>[CAPTURE]</Text>*/}
         </Camera>
