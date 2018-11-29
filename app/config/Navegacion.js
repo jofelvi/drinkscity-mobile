@@ -23,6 +23,8 @@ import StoreRegister from '../screens/StoreRegister';
 import Ventas from '../screens/Ventas';
 import SelectStore from '../screens/SelectStore';
 import Entrada from '../screens/Entrada';
+import Eventos from '../screens/Eventos';
+import ProductoEvento from '../screens/ProductoEvento';
 import PorProducto from '../screens/PorProducto';
 import Portada from '../screens/Portada';
 import DetallesVentas from './DetallesVentas';
@@ -122,6 +124,12 @@ const Navigation = StackNavigator({
 	},
 	Entrada:{
 		screen: Entrada
+	},
+	EventoDetalle: {
+		screen: Eventos
+	},
+	ProductoEvento: {
+		screen: ProductoEvento
 	},
 	PorProducto: {
 		screen: PorProducto

@@ -190,7 +190,7 @@ export default class onQRScann extends React.Component{
 				<StatusBar translucent={false} backgroundColor={'#02A6A4'} />
 				<View>
 					<View>
-						<TouchableOpacity style={{marginTop: 17,xalignSelf: "center", alignContent: "center",alignItems: "center"}}>
+						<TouchableOpacity style={{marginTop: 17, alignSelf: "center", alignContent: "center",alignItems: "center"}}>
 							<Image
 								source={require('../assets/img/drinkscity_logo.png')}
 								style={{
@@ -202,7 +202,7 @@ export default class onQRScann extends React.Component{
 					</View>
 					<View style={{marginTop: "14%"}}>
 						<Button disabled={this.state.load} onPress={()=>{this.validateOrder()}}  rounded full danger>
-							<Text style={{color: "#ffffff"}}>{ (this.state.load)? 'Cargando datos ...' : 'Validar'}</Text>
+							<Text style={{color: "#ffffff"}}>{ (this.state.load) ? 'Cargando datos ...' : 'Validar'}</Text>
 						</Button>
 					</View>
 					<View>

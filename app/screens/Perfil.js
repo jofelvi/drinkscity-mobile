@@ -34,6 +34,8 @@ import Connection from '../config/connection';
 import Cropper from '../classes/Cropper';
 var options = {
   title: 'Selecciona una opciòn',
+	takePhotoButtonTitle: 'Tomar desde la camara',
+	chooseFromLibraryButtonTitle: 'Elegir una desde la galeria',
   storageOptions: {
     skipBackup: true,
     path: 'images'
@@ -55,7 +57,7 @@ export default class Perfil extends React.Component{
 		super(props);
 		this.state = {
 			delivery: undefined,
-			logo: '',
+			logo: null,
 			days_opened: {
 				lun: {
 					horario: null
@@ -123,9 +125,9 @@ export default class Perfil extends React.Component{
 		let session = await AsyncStorage.getItem('@session');
 		let {store} = JSON.parse(session);
 		this.setState({
-			...store
+			...store,
 		});
-		//Alert.alert('DEBUG', JSON.stringify(this.state))
+		// Alert.alert('DEBUG', JSON.stringify(this.state.logo))
 
 	}
 
@@ -206,6 +208,11 @@ export default class Perfil extends React.Component{
 							<Col style={{width: "95%"}}>
 								<Image
 									source={{uri: this.state.logo}}
+									style={{
+										width: "100%",
+										height: 220,
+										flex: 1
+									}}
 								/>
 							</Col>
 							</Row>

@@ -81,7 +81,7 @@ export default class Home extends Component {
 					<View style={{ alignSelf: "center",alignContent: "center", alignItems: "center", flex: 0.1, left: 0, right: 0 ,position: "relative", bottom: 0, flexDirection: 'row', alignItems: "center" ,marginBottom : 0}}>
 						<View style={{flex: 0.8, alignSelf: "center",alignContent: "center", alignItems: "center"}}>
 							<TouchableOpacity onPress={()=>{this.close()}}>
-								<Text style={{color: "#ffffff", alignText: "center"}} > CERRAR SESION</Text>
+								<Text style={{color: "#ffffff"}} > CERRAR SESION</Text>
 							</TouchableOpacity>
 						</View>
 					</View>

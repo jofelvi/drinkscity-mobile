@@ -27,7 +27,7 @@ var BackHandler = require('BackHandler')
 export default class PublicacionEstandar extends React.Component{
 
 	static navigationOptions = ({navigation}) => ({
-		title: `PRODUCTO`,
+		title: `${navigation.state.params.titulo || 'PRODUCTO'}`,
 		headerTintColor: "#ffffff",
 		headerStyle: { backgroundColor: "#01DAC9" }
 	})

@@ -363,7 +363,9 @@ export default class Model{
 			}
 		}).then( (resp)=>{
 			return resp._bodyInit;
-		});
+		}).catch( err => {
+			return err
+		})
 
 		return resp;
 	}

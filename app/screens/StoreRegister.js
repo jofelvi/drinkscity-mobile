@@ -56,9 +56,9 @@ const moment = require('moment');
 const ImagePicker = require('react-native-image-picker');
 var options = {
 	title: 'Seleccionar imagen',
-  	cancelButtonTitle: 'Cancelar',
-  	takePhotoButtonTitle: 'Tomar desde la camara',
-  	chooseFromLibraryButtonTitle: 'Elegir una desde la galeria',
+	cancelButtonTitle: 'Cancelar',
+	takePhotoButtonTitle: 'Tomar desde la camara',
+	chooseFromLibraryButtonTitle: 'Elegir una desde la galeria',
 	storageOptions: {
 		skipBackup: true,
 		path: 'images'
@@ -366,20 +366,22 @@ export default class StoreRegister extends React.Component{
 									</Col>
 								</Row>
 								<Row>
-									<Col style={{width: "47%"}}>
+									<Col style={{width: "95%"}}>
 									<Item floatingLabel>
 										<Label style={{color: "#ffffff"}}>Rut de la Tienda</Label>
 										<Input onChangeText={ value => { this.setState({ rut: value }) } } style={{color: "#ffffff"}} />
 									</Item>
 									</Col>
-									<Col style={{width: "47%"}}>
+								</Row>
+								<Row>
+									<Col style={{width: "95%"}}>
 									<Item floatingLabel>
 										<Label style={{color: "#ffffff"}}>Telefono de la Tienda</Label>
 										<Input onChangeText={text => { this.setState({ phone: text }) }} style={{color: "#ffffff"}} />
 									</Item>
 									</Col>
 								</Row>
-								<Row>
+								<Row style={{ marginTop: 10 }}>
 									<Col style={{width: "95%"}}>
 									<Item stackedLabel>
 										<Label style={{color: "#ffffff"}}>Lunes</Label> 
@@ -458,28 +460,30 @@ export default class StoreRegister extends React.Component{
 									</Col>
 								</Row>
 								<Row>
-									<Col style={{width: "90%"}}>
+									<Col style={{width: "95%"}}>
 									<Item floatingLabel>
-										<Label style={{color: "#ffffff"}}>Correo del Representante Legal de la Tienda</Label>
+										<Label style={{color: "#ffffff"}}>Correo del Rep. Legal de la Tienda</Label>
 										<Input  onChangeText={ text=>{ this.setState({ legal_agent_email: text }) } } style={{color: "#ffffff"}} />
 									</Item>
 									</Col>
 								</Row>
 								<Row>
-									<Col style={{width: "47%"}}>
+									<Col style={{width: "95%"}}>
 									<Item floatingLabel>
 										<Label style={{color: "#ffffff"}}>Rut del Representante</Label>
 										<Input  onChangeText={ text=>{ this.setState({ legal_agent_rut: text }) } } style={{color: "#ffffff"}} />
 									</Item>
 									</Col>
-									<Col style={{width: "47%"}}>
+								</Row>
+								<Row>
+									<Col style={{width: "95%"}}>
 									<Item floatingLabel>
 										<Label style={{color: "#ffffff"}}>Tlfno / Rep.</Label>
 										<Input  onChangeText={ text=>{ this.setState({ legal_agent_phone: text }) } } style={{color: "#ffffff"}} />
 									</Item>
 									</Col>
 								</Row>
-								<Row style={{marginTop: 7, marginBottom: 4}}>	
+								<Row style={{marginTop: 10, marginBottom: 4}}>
 									<Col style={{width: "9%"}}>
 										<CheckBox checked={this.state.delivery} onPress={()=>{ this.setState({ delivery: !this.state.delivery }) }} />
 									</Col>

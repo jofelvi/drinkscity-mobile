@@ -44,6 +44,7 @@ export default class Botonera extends React.Component{
 		let productos = null;
 		let mis_productos = null;
 		let funcionarios = null;
+		let mis_funcionarios = null;
 		let eventos = null;
 		let mis_eventos = null;
 		let ventas = null;
@@ -55,8 +56,8 @@ export default class Botonera extends React.Component{
 							imagen={require('../assets/img/banda.png')} 
 							text={'VIDEO'} 
 							font_size={17}
-							btnSize={84}
-							icon={require('../assets/img/qrmini.png')}
+							// btnSize={84}
+							// icon={require('../assets/img/qrmini.png')}
 						/>
 					</TouchableOpacity>	
 				)
@@ -110,15 +111,28 @@ export default class Botonera extends React.Component{
 
 			if( this.state.user.role == 'store_admin' ){
 				funcionarios = (
-								<TouchableOpacity onPress={ ()=>{ this.props.navigation.navigate('BtnFuncionarios', {titulo: 'FUNCIONARIOS', funcionario: false}); } }>
+								<TouchableOpacity onPress={()=>{this.props.navigation.navigate('FormFuncionario', {titulo: 'CREAR FUNCIONARIO', accion: 'crear' ,funcionario: false})}}>
 									<BackgroundButton 
 										imagen={require('../assets/img/banda.png')} 
-										text={'FUNCIONARIOS'} 
+										text={'CREAR FUNCIONARIOS'} 
 										font_size={17}
 									/>
 								</TouchableOpacity>
 				);
 			}
+
+			if( this.state.user.role == 'store_admin' ){
+				mis_funcionarios = (
+								<TouchableOpacity onPress={ ()=>{ this.props.navigation.navigate('BtnFuncionarios', {titulo: 'FUNCIONARIOS', funcionario: false}); } }>
+									<BackgroundButton 
+										imagen={require('../assets/img/banda.png')} 
+										text={'MIS FUNCIONARIOS'} 
+										font_size={17}
+									/>
+								</TouchableOpacity>
+				);
+			}
+			
 
 			if( this.state.user.role == 'store_admin' ){
 				eventos = (
@@ -180,11 +194,6 @@ export default class Botonera extends React.Component{
 					<Grid>
 						<Row>
 							<Col>
-								{cmr}
-							</Col>
-						</Row>
-						<Row>
-							<Col>
 								{qr}
 							</Col>
 							<Col>
@@ -205,10 +214,14 @@ export default class Botonera extends React.Component{
 							<Row style={{alignContent: "center", alignItems: "center", marginTop: "9%"}}>
 								{funcionarios}
 							</Row>
-
-
+							<Row style={{alignContent: "center", alignItems: "center", marginTop: "9%"}}>
+								{mis_funcionarios}
+							</Row>
 						</Col>
 						<Col>
+							<Row style={{alignContent: "center", alignItems: "center"}}>
+								{cmr}
+							</Row>
 							<Row style={{alignContent: "center", alignItems: "center"}}>
 								{eventos}
 							</Row>

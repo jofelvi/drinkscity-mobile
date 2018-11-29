@@ -43,6 +43,8 @@ const moment = require('moment');
 var ImagePicker = require('react-native-image-picker');
 var options = {
   title: 'Selecciona una opción',
+  takePhotoButtonTitle: 'Tomar desde la camara',
+  chooseFromLibraryButtonTitle: 'Elegir una desde la galeria',
   storageOptions: {
     skipBackup: true,
     path: 'images'

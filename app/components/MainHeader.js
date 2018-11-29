@@ -61,14 +61,14 @@ export default class MainHeader extends React.Component{
 		var portada = require('../assets/img/dc.jpg')
 		if(store !== null){
 			const con = new Connection();
-			logo =  { uri: con.getProtocol()+'//'+con.getOnlyUrl()+store.logo };
+			logo =  { uri: store.logo };
 			let url = ( typeof(logo) == 'string' ) ? logo : JSON.stringify(logo);
-		//	Alert.alert('DEBUG', JSON.stringify(store))
+			// Alert.alert('DEBUG', JSON.stringify(store.logo))
 			if(store.images){
 				let { images } = store;
 				if(images.self.length > 0){
 					let imgSrc = ( (store.images.self.length - 1) < 0 ) ? store.images.self[0] : store.images.self[ (store.images.self.length - 1) ];
-					let url = con.getProtocol()+'//'+con.getOnlyUrl()+'/'+imgSrc.cover_url;
+					let url = imgSrc.cover_url;
 					
 					portada = { uri: url };
 					//Alert.alert('URL', JSON.stringify(portada));
@@ -133,7 +133,8 @@ const styles = {
 	},
 	logoText: {
 		marginBottom: 0,
-		marginTop: 10,
+		marginTop: 5,
+		paddingBottom: 10,
 		color: "#ffffff",
 		fontSize: 30
 

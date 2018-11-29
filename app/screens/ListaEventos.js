@@ -120,9 +120,9 @@ export default class ListaEventos extends React.Component{
 	_loadUrlImageResource(toLoad){
 		const con = new Connection();
 
-		var url ='';
+		var url = null;
 		if( Array.isArray(toLoad.images.self) && toLoad.images.self.length > 0 ){
-			url = con.getProtocol()+'//'+con.getOnlyUrl()+toLoad.images.self[0].cover_url;
+			url = toLoad.images.self[0].cover_url;
 			//Alert.alert('URL', url);
 		}
 
@@ -155,7 +155,7 @@ export default class ListaEventos extends React.Component{
 				//Alert.alert('data', JSON.stringify(datos)+ ' -> '+JSON.stringify(store));
 				if(datos.store.id == store.id){
 					return(
-							<Card style={{ width: "99%", borderColor: "#01DAC9", borderWidth: 1, backgroundColor: "#111111" }} >
+							<Card key={i} style={{ width: "99%", borderColor: "#01DAC9", borderWidth: 1, backgroundColor: "#111111" }} >
 								<CardItem style={{backgroundColor: "#111111"}}>
 									<Left />
 									<Body />
@@ -163,7 +163,7 @@ export default class ListaEventos extends React.Component{
 										<PopMenu navigation={this.props.navigation} onDelete={this._onDelete}  model={'events'} onUpdatePress={this._onUpdateButtonPress} onUpdate={this._onUpdate}  navigation={this.props.navigation} evento={data} eventos={this.state.eventos} />
 									</Right>
 								</CardItem>
-								<CardItem cardBody style={{backgroundColor: "#111111"}}>
+								<CardItem button onPress={()=>this.props.navigation.navigate('EventoDetalle', { evento: data })} cardBody style={{backgroundColor: "#111111"}}>
 									<Image 
 										source={{uri: this._loadUrlImageResource(data.data) }}
 										style={{
@@ -173,7 +173,7 @@ export default class ListaEventos extends React.Component{
 										}}
 									/>
 								</CardItem>
-								<CardItem style={{backgroundColor: "#111111"}}>
+								<CardItem button onPress={()=>this.props.navigation.navigate('EventoDetalle', { evento: data })} style={{backgroundColor: "#111111"}}>
 									<Col>
 										<Text selectable={true} style={{color: "#ffffff",textAlign: "center", width: "100%", fontSize: 17,}}>
 											{data.data.name}

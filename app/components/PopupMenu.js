@@ -38,6 +38,11 @@ export class PopMenu extends React.Component {
 			        >
 			        	<Text style={{fontSize: 21}}>Crear entradas</Text>
 			        </MenuOption>
+			        <MenuOption 
+			        	onSelect={()=>{ this.props.navigation.navigate('ProductoEvento',{from: 'events',event: this.props.evento, action: 'PUT' ,item_type: 'Events', tipo: "ESTANDAR", titulo: "PRODUCTOS POR EVENTO", dato: false, priority: 0}) }} 
+			        >
+			        	<Text style={{fontSize: 21}}>Adicionar producto</Text>
+			        </MenuOption>
 		        </View>
 			);
 		}
