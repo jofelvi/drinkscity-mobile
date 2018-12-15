@@ -41,6 +41,8 @@ const moment = require ('moment');
 
 var options = {
   title: 'Selecciona una opción',
+	takePhotoButtonTitle: 'Tomar desde la camara',
+	chooseFromLibraryButtonTitle: 'Elegir una desde la galeria',
   storageOptions: {
     skipBackup: true,
     path: 'images'
@@ -77,6 +79,7 @@ export default class PubEstandar extends React.Component{
 			ref_enddatetime: null
 		};
 	}
+
 
 	async componentWillMount(){
 		let session = await AsyncStorage.getItem('@session');
@@ -183,7 +186,7 @@ export default class PubEstandar extends React.Component{
 								width: "100%",
 								height: 160
 							}}
-							source={{uri: (arr.length > 1)? image :this.state.con.getProtocol()+'//'+this.state.con.getOnlyUrl() +image }} 
+							source={{uri: (arr.length > 1)? image : image }} 
 						/>
 						<View style={{flex:1, position: 'absolute', top: 0, right: 0}}>
 							<Button 
@@ -196,9 +199,7 @@ export default class PubEstandar extends React.Component{
 
 								}}
 							>
-							<Text>
 								<FontAwesome style={{color: "#ffffff", fontSize: 15}}>{Icons.close}</FontAwesome>
-							</Text>
 						</Button>
 					</View>
 				</View>
@@ -271,7 +272,7 @@ export default class PubEstandar extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{width: "95%", marginLeft: 10}} >
+							<Col style={{width: "95%", marginLeft: 10, borderBottomWidth: 1, borderBottomColor: 'white'}} >
 								<Picker
 									mode='dropdown'
 									onValueChange={value => { this.state.pub.setAttribute('category', value); this.setState({category: value}); }}

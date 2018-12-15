@@ -36,30 +36,33 @@ export default class Botonera extends React.Component{
 
 	render(){
 
+		let invitados = null;
 		let cmr = null;
+		let rrpp_eventos = null;
 		let qr = null;
 		let s = null;
 		let productos = null;
 		let mis_productos = null;
 		let funcionarios = null;
+		let mis_funcionarios = null;
 		let eventos = null;
 		let mis_eventos = null;
 		let ventas = null;
 		if( this.state.user !== null ){
-			if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin' || this.state.user.role == 'rrpp'  ){
+			if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin' ){
 				cmr = (
 					<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('Videos') }} style={{alignSelf: "center", alignItems: "center", alignContent: "center", marginBottom: "7%"}}>
 						<BackgroundButton 
 							imagen={require('../assets/img/banda.png')} 
 							text={'VIDEO'} 
 							font_size={17}
-							btnSize={84}
-							icon={require('../assets/img/qrmini.png')}
+							// btnSize={84}
+							// icon={require('../assets/img/qrmini.png')}
 						/>
 					</TouchableOpacity>	
 				)
 			}
-			if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin' || this.state.user.role == 'rrpp'  ){
+			if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin' ){
 				qr = (
 					<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('QRScanner') }} style={{marginBottom: "7%"}}>
 						<BackgroundButton 
@@ -108,15 +111,28 @@ export default class Botonera extends React.Component{
 
 			if( this.state.user.role == 'store_admin' ){
 				funcionarios = (
-								<TouchableOpacity onPress={ ()=>{ this.props.navigation.navigate('BtnFuncionarios', {titulo: 'FUNCIONARIOS', funcionario: false}); } }>
+								<TouchableOpacity onPress={()=>{this.props.navigation.navigate('FormFuncionario', {titulo: 'CREAR FUNCIONARIO', accion: 'crear' ,funcionario: false})}}>
 									<BackgroundButton 
 										imagen={require('../assets/img/banda.png')} 
-										text={'FUNCIONARIOS'} 
+										text={'CREAR FUNCIONARIOS'} 
 										font_size={17}
 									/>
 								</TouchableOpacity>
 				);
 			}
+
+			if( this.state.user.role == 'store_admin' ){
+				mis_funcionarios = (
+								<TouchableOpacity onPress={ ()=>{ this.props.navigation.navigate('BtnFuncionarios', {titulo: 'FUNCIONARIOS', funcionario: false}); } }>
+									<BackgroundButton 
+										imagen={require('../assets/img/banda.png')} 
+										text={'MIS FUNCIONARIOS'} 
+										font_size={17}
+									/>
+								</TouchableOpacity>
+				);
+			}
+			
 
 			if( this.state.user.role == 'store_admin' ){
 				eventos = (
@@ -130,7 +146,19 @@ export default class Botonera extends React.Component{
 				);
 			}
 
-			if( this.state.user.role == 'store_admin' || this.state.user.role == 'rrpp'){
+			if(this.state.user.role == 'rrpp'){
+				rrpp_eventos = (
+								<TouchableOpacity onPress={()=> { this.props.navigation.navigate('RrppEventos',{titulo: 'Listado de eventos publicados', side: 'Home', event: false}) } }>
+									<BackgroundButton 
+										imagen={require('../assets/img/banda.png')} 
+										text={'MIS EVENTOS'} 
+										font_size={17}
+									/>
+								</TouchableOpacity>
+				);
+			}
+
+			if( this.state.user.role == 'store_admin'){
 				mis_eventos = (
 								<TouchableOpacity onPress={()=> { this.props.navigation.navigate('Eventos',{titulo: 'Listado de eventos publicados', side: 'Home', event: false}) } }>
 									<BackgroundButton 
@@ -166,11 +194,6 @@ export default class Botonera extends React.Component{
 					<Grid>
 						<Row>
 							<Col>
-								{cmr}
-							</Col>
-						</Row>
-						<Row>
-							<Col>
 								{qr}
 							</Col>
 							<Col>
@@ -191,13 +214,23 @@ export default class Botonera extends React.Component{
 							<Row style={{alignContent: "center", alignItems: "center", marginTop: "9%"}}>
 								{funcionarios}
 							</Row>
-
-
+							<Row style={{alignContent: "center", alignItems: "center", marginTop: "9%"}}>
+								{mis_funcionarios}
+							</Row>
 						</Col>
 						<Col>
 							<Row style={{alignContent: "center", alignItems: "center"}}>
+								{cmr}
+							</Row>
+							<Row style={{alignContent: "center", alignItems: "center"}}>
 								{eventos}
 							</Row>
+
+
+							<Row style={{alignContent: "center", alignItems: "center"}}>
+								{rrpp_eventos}
+							</Row>
+
 							<Row style={{alignContent: "center", alignItems: "center",  marginTop: "9%"}}>
 								{mis_eventos}
 							</Row>

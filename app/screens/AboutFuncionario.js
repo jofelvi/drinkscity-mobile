@@ -109,7 +109,7 @@ export default class AboutFuncionario extends React.Component{
 		eval(accion);
 		const { navigation } = this.props;
 
-		navigation.state.params.onBack(true);
+		// navigation.state.params.onBack(true);
 	}
 
 	async componentDidMount(){
@@ -130,7 +130,7 @@ export default class AboutFuncionario extends React.Component{
 					text: 'Aceptar',
 					onPress: ()=>{
 						let resp = this.state.funcionario.push(this.props.navigation);
-						this._accion("this.props.navigation.goBack()");
+						this._accion(this.props.navigation.goBack());
 					}
 				}
 			]

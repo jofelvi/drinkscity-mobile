@@ -8,11 +8,14 @@ import Funcionarios from '../screens/Funcionarios';
 import AboutFuncionario from '../screens/AboutFuncionario';
 import QRScaner from '../screens/QRScaner';
 import Streaming from '../screens/Streaming';
+import VideoDetail from '../screens/VideoDetail';
 import onQRScann from '../screens/onQRScann';
 import Videos from '../screens/Videos';
+import Invitados from '../screens/Invitados'
 import ListFormsEvents from '../screens/ListFormsEvents';
 import Login from '../screens/Login';
 import ListaEventos from '../screens/ListaEventos';
+import RrppListaEventos from '../screens/RrppListaEventos';
 import Graphics from '../screens/Graphics';
 import Splash from '../screens/Splash';
 import SlideScreen from '../screens/SlideScreen';
@@ -20,6 +23,8 @@ import StoreRegister from '../screens/StoreRegister';
 import Ventas from '../screens/Ventas';
 import SelectStore from '../screens/SelectStore';
 import Entrada from '../screens/Entrada';
+import Eventos from '../screens/Eventos';
+import ProductoEvento from '../screens/ProductoEvento';
 import PorProducto from '../screens/PorProducto';
 import Portada from '../screens/Portada';
 import DetallesVentas from './DetallesVentas';
@@ -27,6 +32,7 @@ import DetallesVentas from './DetallesVentas';
 import { Platform, StatusBar } from 'react-native';
 
 import FormEvent from '../components/forms/FormEvent';
+import FormGuest from '../components/forms/FormGuest';
 
 const Navigation = StackNavigator({
 	Splash: {
@@ -71,6 +77,9 @@ const Navigation = StackNavigator({
 	Streaming:{
 		screen: Streaming
 	},
+	VideoDetail: {
+		screen: VideoDetail
+	},
 	onScanner:{
 		screen:onQRScann
 	},
@@ -80,11 +89,20 @@ const Navigation = StackNavigator({
 	FormsEvents: {
 		screen: ListFormsEvents
 	},
+	FormGuest: {
+		screen: FormGuest
+	},
 	FormEvent:{
 		screen: FormEvent
 	},
 	Eventos:{
 		screen: ListaEventos
+	},
+	RrppEventos: {
+		screen: RrppListaEventos
+	},
+	Invitados:{
+		screen: Invitados
 	},
 	VentasScreen: {
 		screen: Ventas
@@ -106,6 +124,12 @@ const Navigation = StackNavigator({
 	},
 	Entrada:{
 		screen: Entrada
+	},
+	EventoDetalle: {
+		screen: Eventos
+	},
+	ProductoEvento: {
+		screen: ProductoEvento
 	},
 	PorProducto: {
 		screen: PorProducto

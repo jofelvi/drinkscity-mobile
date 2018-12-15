@@ -34,6 +34,8 @@ import Connection from '../config/connection';
 import Cropper from '../classes/Cropper';
 var options = {
   title: 'Selecciona una opciòn',
+	takePhotoButtonTitle: 'Tomar desde la camara',
+	chooseFromLibraryButtonTitle: 'Elegir una desde la galeria',
   storageOptions: {
     skipBackup: true,
     path: 'images'
@@ -55,7 +57,30 @@ export default class Perfil extends React.Component{
 		super(props);
 		this.state = {
 			delivery: undefined,
-			logo: ''
+			logo: null,
+			days_opened: {
+				lun: {
+					horario: null
+				},
+				mar: {
+					horario: null
+				},
+				mier: {
+					horario: null
+				},
+				juev: {
+					horario: null
+				},
+				vier: {
+					horario: null
+				},
+				sab: {
+					horario: null
+				},
+				dom: {
+					horario: null
+				}
+			},
 		}
 	}
 
@@ -100,9 +125,9 @@ export default class Perfil extends React.Component{
 		let session = await AsyncStorage.getItem('@session');
 		let {store} = JSON.parse(session);
 		this.setState({
-			...store
+			...store,
 		});
-		//Alert.alert('DEBUG', JSON.stringify(this.state))
+		// Alert.alert('DEBUG', JSON.stringify(this.state.logo))
 
 	}
 
@@ -158,6 +183,16 @@ export default class Perfil extends React.Component{
 	}
  	/*
  	 */
+
+	_onDaysInputChange( value, dia ){
+		let { days_opened } = this.state;
+		// alert(JSON.stringify(days_opened))
+		// days_opened[dia].horario = value;
+		this.setState({
+			days_opened
+		});
+	}
+
 	render(){
 		const { width, height } = Dimensions.get('screen')
 		let store = null;
@@ -173,6 +208,11 @@ export default class Perfil extends React.Component{
 							<Col style={{width: "95%"}}>
 								<Image
 									source={{uri: this.state.logo}}
+									style={{
+										width: "100%",
+										height: 220,
+										flex: 1
+									}}
 								/>
 							</Col>
 							</Row>
@@ -259,7 +299,63 @@ export default class Perfil extends React.Component{
 							</Item>
 						</Col>
 						<Grid>
-							<Col style={{width: "47.5%"}}>
+								<Row>
+									<Col style={{width: "95%"}}>
+									<Item stackedLabel>
+										<Label style={{color: "#ffffff"}}>Lunes</Label> 
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'lun' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
+									</Item>
+									</Col>
+								</Row>
+								<Row>
+									<Col style={{width: "95%"}}>
+									<Item stackedLabel>
+										<Label style={{color: "#ffffff"}}>Martes</Label> 
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'mar' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
+									</Item>
+									</Col>
+								</Row>
+								<Row>
+									<Col style={{width: "95%"}}>
+									<Item stackedLabel>
+										<Label style={{color: "#ffffff"}}>Miercoles</Label> 
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'mier' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
+									</Item>
+									</Col>
+								</Row>
+								<Row>
+									<Col style={{width: "95%"}}>
+									<Item stackedLabel>
+										<Label style={{color: "#ffffff"}}>Jueves</Label> 
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'juev' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
+									</Item>
+									</Col>
+								</Row>
+								<Row>
+									<Col style={{width: "95%"}}>
+									<Item stackedLabel>
+										<Label style={{color: "#ffffff"}}>Viernes</Label> 
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'vier' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"}  />
+									</Item>
+									</Col>
+								</Row>
+								<Row>
+									<Col style={{width: "95%"}}>
+									<Item stackedLabel>
+										<Label style={{color: "#ffffff"}}>Sabado</Label> 
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'sab' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"}  />
+									</Item>
+									</Col>
+								</Row>
+								<Row>
+									<Col style={{width: "95%"}}>
+									<Item stackedLabel>
+										<Label style={{color: "#ffffff"}}>Domingo</Label> 
+										<Input onChangeText={ text => { this._onDaysInputChange( text, 'dom' )  } } style={{color: "#ffffff"}} placeholder={"HH:MM AM/PM - HH:MM AM/PM"} />
+									</Item>
+									</Col>
+								</Row>
+{/*							<Col style={{width: "47.5%"}}>
 								<Item floatingLabel>
 									<Label style={{color: "#ffffff"}}> Dias de atencion </Label>
 									<Input
@@ -268,7 +364,7 @@ export default class Perfil extends React.Component{
 										onChangeText={ text =>{ this.setState( {laboral_days: text} ); } }
 									/>
 								</Item>
-							</Col>
+							</Col>*/}
 							<Col style={{width: "47.5%"}}>
 								<Item floatingLabel>
 									<Label style={{color: "#ffffff"}}> Horario </Label>
@@ -295,7 +391,7 @@ export default class Perfil extends React.Component{
 							</Col>
 						</Grid>
 						<Grid>
-							<Col style={{width: "45%"}}>
+							<Col style={{width: "95%"}}>
 								<Item floatingLabel>
 									<Label style={{color: "#ffffff"}}> Email del rep/legal </Label>
 									<Input
@@ -307,7 +403,7 @@ export default class Perfil extends React.Component{
 									/>
 								</Item>
 							</Col>
-							<Col style={{width: "45%"}}>
+							<Col style={{width: "95%"}}>
 								<Item floatingLabel>
 									<Label style={{color: "#ffffff"}}> Telefono del rep/legal </Label>
 									<Input

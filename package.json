@@ -29,6 +29,7 @@
 		"react-native-popup-menu": "^0.12.2",
 		"react-native-svg": "^5.2.0",
 		"react-native-swiper": "git+https://github.com/FuYaoDe/react-native-swiper.git",
+		"react-native-webrtc": "git+https://git@github.com/oney/react-native-webrtc.git#rn-less-40",
 		"react-native-video": "^3.2.1",
 		"react-native-youtube": "^1.1.0",
 		"react-navigation": "^1.0.0-beta.27",

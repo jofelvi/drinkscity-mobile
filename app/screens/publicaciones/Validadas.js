@@ -43,6 +43,8 @@ const moment = require ('moment');
 
 var options = {
   title: 'Cargar imagenes',
+	takePhotoButtonTitle: 'Tomar desde la camara',
+	chooseFromLibraryButtonTitle: 'Elegir una desde la galeria',
   storageOptions: {
     skipBackup: true,
     path: 'images'

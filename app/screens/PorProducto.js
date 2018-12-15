@@ -99,8 +99,8 @@ export default class PorProducto extends Component{
 		let { product } = this.props.navigation.state.params;
 		const con = new Connection();
 		
-		//Alert.alert('producto', JSON.stringify(product))
-		let ImageUrl = ( product.image !== undefined ) ? con.getProtocol()+'//'+con.getOnlyUrl()+product.image : product.images.self[0].cover_url;
+		// Alert.alert('producto', JSON.stringify(product))
+		let ImageUrl = ( product.image !== undefined ) ? product.image : product.images.self[0].cover_url;
 		
 		//Alert.alert('debug',JSON.stringify(this.props.navigation.state.params.product))
 		return(
@@ -114,14 +114,10 @@ export default class PorProducto extends Component{
 						/>
 						<View style={{flex:1, position:'absolute', right: 0}}>
 							<Button rounded danger onPress={()=>{ this.onDelete(); }}>
-								<Text>
 									<FontAwesome style={{color:"#ffffff", fontSize: 22}}>{Icons.close}</FontAwesome>
-								</Text>
 							</Button>
 							<Button onPress={()=>{ this.props.navigation.navigate('Estandar', {producto: product, from: 'Productos'}) }} rounded style={{backgroundColor: '#01DAC9', marginTop: 10}}>
-								<Text>
 									<FontAwesome style={{color:"#ffffff", fontSize: 22}}>{Icons.pencil}</FontAwesome>
-								</Text>
 							</Button>
 						</View>
 					</CardItem>

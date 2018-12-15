@@ -17,9 +17,13 @@ import {
   Button,
   Icon,
   Body,
-  Title
+  Title,
+  Grid,
+  Row,
+  Col
 } from 'native-base';
 
+// import Camera from 'react-native-camera';
 // import { QRScannerView } from '../components/AC-QRCode-RN/lib/index';
 
 import BackHandler from 'BackHandler';
@@ -36,7 +40,8 @@ export default class QRScaner extends Component {
   constructor(props){
     super(props);
     this.state = {
-      onBarCodeRead: this._onBarCodeRead
+      onBarCodeRead: null,
+      readed: false
     }
   }
 
@@ -50,6 +55,14 @@ export default class QRScaner extends Component {
     })
   }
 
+   _takePicture = async () => {
+    if (this.camera) {
+      const options = { quality: 0.5, base64: true }
+      const data = await this.camera.takePictureAsync(options)
+      console.log(data.uri)
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -60,6 +73,28 @@ export default class QRScaner extends Component {
                   renderBottomMenuView={this._topBarView.bind(this)}
                   hintText={'Posiciona el QR en el area delimitada'}
                 />*/}
+        <Camera
+          ref={(ref) => {
+            this.camera = ref;
+          }}
+          onBarCodeRead={(e) => this._onBarCodeRead(e)}
+          style={styles.preview}>
+          {
+            this.state.readed &&
+            <Grid>
+              <Row style={{alignItems: "flex-end", alignSelf: "center", alignContent: "center"}}>
+                <Col style={{width: "84%"}}>
+                  <Button onPress={()=>{ this.setState({readed: false}); this.props.navigation.navigate('onScanner', {scanData: this.state.onBarCodeRead})}} block  style={{ backgroundColor: "#02A6A4"}}>
+                    <Text style={{color: "#ffffff"}}>
+                      VERIFICAR
+                    </Text>
+                  </Button>
+                </Col>
+              </Row>
+            </Grid>
+          }
+          <Text style={styles.capture} onPress={() => this._takePicture()}>{this.state.onBarCodeRead}</Text>
+      </Camera>
       </View>
     );
   }
@@ -73,16 +108,18 @@ export default class QRScaner extends Component {
   }
  
   _onBarCodeRead=(e)=>{ 
+    // alert(JSON.stringify(e))
     this.setState({
-      onBarCodeRead: null
+      onBarCodeRead: e.data,
+      readed: true
     });
-     this.props.navigation.navigate('onScanner', {scanData: e});
+     // 
 
-     setTimeout(()=>{
-      this.setState({
-        onBarCodeRead: this._onBarCodeRead
-      });
-     },4000)
+     // setTimeout(()=>{
+     //  this.setState({
+     //    onBarCodeRead: this._onBarCodeRead
+     //  });
+     // },4000)
 
   }
 
@@ -112,5 +149,6 @@ const styles = StyleSheet.create({
     color: '#000',
     padding: 10,
     margin: 40
-  }
+  },
+  
 });

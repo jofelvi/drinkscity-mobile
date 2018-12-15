@@ -58,12 +58,12 @@ export default class Funcionarios extends React.Component{
 			users: []
 		};
 
-		store.subscribe( ()=>{
-			let objects = JSON.parse(store.getState().users).filter( func => func);
-			this.setState({
-				funcionarios: objects
-			});
-		} )
+		// store.subscribe( ()=>{
+		// 	let objects = JSON.parse(store.getState().users).filter( func => func);
+		// 	this.setState({
+		// 		funcionarios: objects
+		// 	});
+		// })
 	}
 
 	onBack = complete => {
@@ -132,9 +132,9 @@ export default class Funcionarios extends React.Component{
 								{ (data.fullname == null) ? 'No aplica' : data.fullname }
 							</Text>
 							{
-								this.funcionario.getRoles().map( (rol)=> { 
+								this.funcionario.getRoles().map( (rol, i)=> { 
 									if(rol.name == data.role)
-										return <Text note style={{color: "#ffffff"}}>{rol.description}</Text> 
+										return <Text key={i} note style={{color: "#ffffff"}}>{rol.description}</Text> 
 								})
 							}						
 						</TouchableOpacity>
@@ -177,17 +177,19 @@ export default class Funcionarios extends React.Component{
 					</List>
 				</ScrollView>
 				<View style={{flex: 1}} >
-					<Fab
-			            active={this.state.active}
-			            direction="up"
-			            containerStyle={{ }}
-			            style={{ backgroundColor: '#02A6A4' }}
-			            position="bottomRight"
-			            onPress={()=>{this.props.navigation.navigate('FormFuncionario', {titulo: 'CREAR FUNCIONARIO', accion: 'crear' ,funcionario: false, onBack: this.onBack, onUpdate: this.onUpdate})}}>
-			            
-			            	<FontAwesome>{Icons.plus}</FontAwesome>
-			            
-			        </Fab>
+					{/*
+						<Fab
+				            active={this.state.active}
+				            direction="up"
+				            containerStyle={{ }}
+				            style={{ backgroundColor: '#02A6A4' }}
+				            position="bottomRight"
+				            onPress={()=>{this.props.navigation.navigate('FormFuncionario', {titulo: 'CREAR FUNCIONARIO', accion: 'crear' ,funcionario: false, onBack: this.onBack, onUpdate: this.onUpdate})}}>
+				            
+				            	<FontAwesome>{Icons.plus}</FontAwesome>
+				            
+		        </Fab>
+	      	*/}
 				</View>
 			</View>
 		);

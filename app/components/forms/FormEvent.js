@@ -43,6 +43,8 @@ const moment = require('moment');
 var ImagePicker = require('react-native-image-picker');
 var options = {
   title: 'Selecciona una opción',
+	takePhotoButtonTitle: 'Tomar desde la camara',
+	chooseFromLibraryButtonTitle: 'Elegir una desde la galeria',
   storageOptions: {
     skipBackup: true,
     path: 'images'
@@ -333,12 +335,13 @@ export default class FormEvent extends React.Component{
 	};
 
 	_renderImages(){
-		let { images } = this.state;
+		let { images, event } = this.state;
+		// alert(JSON.stringify(event.data.images.self))
+		let values = (event && event.data && event.data.images) ? event.data.images.self : images
 		let items = null;
-			items = images.map( (data, i)=>{
-
+			items = values.map( (data, i)=>{
 				return (
-					<Col>
+					<Col key={i}>
 						<View style={{flex: 1, width: "100%", alignContent: "center", alignSelf: "center" , height: 150, marginTop: 10, marginBottom: 3}}>
 							<Thumbnail 
 								square  
@@ -347,7 +350,7 @@ export default class FormEvent extends React.Component{
 									height: 160,
 									flex: 1
 								}}
-								source={{uri: (data.cover_url != undefined ) ? this.state.con.getProtocol()+'//'+this.state.con.getOnlyUrl()+data.cover_url : data }} 
+								source={{uri: (data.cover_url != undefined ) ? data.cover_url : data }} 
 							/>
 							<View style={{flex:1, position: 'absolute', top: 0, right: 0}}>
 								<Button 
@@ -362,9 +365,7 @@ export default class FormEvent extends React.Component{
 
 									}}
 								>
-									<Text>
-										<FontAwesome style={{color: "#ffffff", fontSize: 15}}>{Icons.close}</FontAwesome>
-									</Text>
+									<FontAwesome style={{color: "#ffffff", fontSize: 15}}>{Icons.close}</FontAwesome>
 								</Button>
 							</View>
 						</View>
@@ -421,7 +422,7 @@ export default class FormEvent extends React.Component{
 										style={{ color: "#ffffff" }} >Titulo del Evento
 									</Label>
 									<Input 
-										style={{ color: "#ffffff" }} 
+										style={{ color: "#ffffff" }}
 										onChangeText={ text =>{this.state.event.setAttribute('name',text); this.setState({name: text}) }} 
 										value={this.state.name} 
 									/>
@@ -429,12 +430,12 @@ export default class FormEvent extends React.Component{
 							</Col>
 						</Row>
 						<Row style={{ marginTop: 10 }}>
-							<Col style={{width: "95%", marginLeft: "2%"}}>
-								<Label style={{ color: "#ffffff", marginLeft: 7 }}>Categoria</Label>
+							<Col style={{width: "95%", marginLeft: "2%", borderBottomWidth: 1, borderBottomColor: 'white'}}>
+								<Label style={{ color: "#ffffff", marginLeft: 7}}>Categoria</Label>
 								<Picker
 									mode='dropdown'
 									onValueChange={value => { this.state.event.setAttribute('category', value); this.setState({category: value}); }}
-									style={{ color: "#ffffff", textDecorationLine: 'underline' }}
+									style={{ color: "#ffffff" }}
 									selectedValue={this.state.category}
 							       	itemStyle={{color: "#ffffff", backgroundColor: 'lightgrey', marginLeft: 0, paddingLeft: 15 }}
 							       	itemTextStyle={{ fontSize: 18, color: 'white' }}
@@ -457,9 +458,9 @@ export default class FormEvent extends React.Component{
 						</Row>
 						<Grid>
 							<Row>
-								<Col style={{width: "95%"}}>
-									<Label style={{ color: "#ffffff", marginLeft: 14 }}>Direccion</Label>
-									<View style={{marginLeft: 14, alignSelf: "center", alignContent: "center", alignItems: "center"}} >
+								<Col style={{width: "95%", marginTop: 10}}>
+									<Label style={{ color: "#ffffff", marginLeft: 14 }}>Dirección</Label>
+									<View style={{marginLeft: 14, alignSelf: "center", alignContent: "center", alignItems: "center", borderBottomWidth:1, borderBottomColor: 'white'}} >
 										<GooglePlacesInput onDirectionSelect={this.getGoogleDescription} />
 									</View>
 								</Col>

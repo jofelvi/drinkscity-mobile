@@ -44,6 +44,8 @@ const moment = require ('moment');
 
 var options = {
   title: 'Cargar imagenes',
+	takePhotoButtonTitle: 'Tomar desde la camara',
+	chooseFromLibraryButtonTitle: 'Elegir una desde la galeria',
   storageOptions: {
     skipBackup: true,
     path: 'images'
@@ -76,6 +78,8 @@ export default class Entrada extends React.Component{
 			ref_enddatetime: null,
 			event: null,
 			savePress: false,
+			price: 0.00,
+			stock: 0.00,
 			start_date: moment((new Date()), 'YYYY-MM-DD').format('YYYY-MM-DD'),
 			end_date: moment((new Date()), 'YYYY-MM-DD').format('YYYY-MM-DD'),
 		};
@@ -135,7 +139,18 @@ export default class Entrada extends React.Component{
 		let session = await AsyncStorage.getItem('@session');
 		let { token } = await JSON.parse(session);
 
-		let body= `{ "ticket": { "name": "${this.state.name}", "start_date": "${this.state.start_date}", "end_date": "${this.state.end_date}", "price": ${this.state.price}, "stock": ${this.state.stock}, "event_id": ${event.data.id}, "users": ${JSON.stringify(this.state.selectedItems)} } } `;
+		// let body= `{ "ticket": { "name": "${this.state.name}", "start_date": "${this.state.start_date}", "end_date": "${this.state.end_date}", "price": ${this.state.price}, "stock": ${this.state.stock}, "event_id": ${event.data.id}, "users": ${JSON.stringify(this.state.selectedItems)} } } `;
+		let body = {
+			ticket: {
+				name: this.state.name,
+				start_date: this.state.start_date,
+				end_date: this.state.end_date,
+				price: this.state.price,
+				stock: this.state.stock,
+				event_id: event.data.id,
+				users: this.state.selectedItems
+			}
+		}
 		let request =await fetch( con.getUrlApi('tickets'), {
 			method: 'POST',
 			headers: {
@@ -143,9 +158,9 @@ export default class Entrada extends React.Component{
 				'Content-Type': 'application/json',
 				Accept: 'json'
 			},
-			body
+			body: JSON.stringify(body)
 		} ).then(resp => {
-			if(resp.status == 200 || resp.status== '200' || resp.status == 201 || resps.status == '201'){
+			if(resp.status == 200 || resp.status== '200' || resp.status == 201 || resp.status == '201'){
 				Alert.alert('Confirmacion', 'La entrada ha sido creada de manera correcta',[
 					{
 						text: 'Aceptar',
@@ -231,7 +246,7 @@ export default class Entrada extends React.Component{
 								<Picker
 									mode='dropdown'
 									onValueChange={value => { this.state.pub.setAttribute('type', value); this.setState({type: value}); }}
-									style={{ color: "#ffffff", textDecorationLine: 'underline' }}
+									style={{ color: "#ffffff" }}
 									selectedValue={this.state.type}
 							       	itemStyle={{color: "#ffffff", backgroundColor: 'lightgrey', marginLeft: 0, paddingLeft: 15 }}
 							       	itemTextStyle={{ fontSize: 18, color: 'white' }}
@@ -304,7 +319,7 @@ export default class Entrada extends React.Component{
 									<Input 
 										style={{ color: "#ffffff" }} 
 										onChangeText={ stock =>{ this.setState({ stock: this.state.pub.setAttribute('stock', stock) }) }}  
-										value={this.state.stock}
+										value={this.state.stock+""}
 									/>
 								</Item>
 							</Col>
@@ -315,7 +330,7 @@ export default class Entrada extends React.Component{
 										disabled={this.state.type == 'cortesia' ? true : false}
 										style={{ color: "#ffffff" }} 
 										onChangeText={ price =>{ this.setState({ price: this.state.pub.setAttribute('price', price) }) }}  
-										value={this.state.price}
+										value={this.state.price+""}
 									/>
 								</Item>
 							</Col>

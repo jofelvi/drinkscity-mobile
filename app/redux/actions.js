@@ -33,6 +33,22 @@ const modelActions = (funcionarios = [], model = null) =>{
 		}
 		return funcs;
 	}
+
+	if( model == 'rrpp_events' ){
+		let funcs = {
+			type: 'LOAD_EVENTS_RRPP',
+			funcionarios
+		}
+		return funcs;
+	}
+
+	if (model == 'guests') {
+		let funcs = {
+			type: 'LOAD_GUESTS',
+			funcionarios
+		}
+		return funcs;
+	}
 }
 
 

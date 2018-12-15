@@ -66,7 +66,7 @@ const GooglePlacesInput = ( props ) => {
         },
         listView:{
         	color :"#111111",
-          backgroundColor: '#FFFFFF'
+          backgroundColor: '#111111'
         },
         textInput: {
           marginLeft: 0,

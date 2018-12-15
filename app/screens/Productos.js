@@ -101,16 +101,15 @@ export default class Productos extends React.Component{
 	}
 
 	_loadUrlImageResource(toLoad){
-		const con = new Connection();
-
 		var url ='';
 		if( toLoad.images !== undefined ){
 			if( Array.isArray(toLoad.images.self) && toLoad.images.self.length > 0 ){
-				url = con.getProtocol()+'//'+con.getOnlyUrl()+toLoad.images.self[0].cover_url;
+				url = toLoad.images.self[0].cover_url;
 				
 			}
 		}
-		else url = con.getProtocol()+'//'+con.getOnlyUrl()+toLoad.image;
+		// else url = con.getProtocol()+'//'+con.getOnlyUrl()+toLoad.image;
+		else url = toLoad.image;
 		return url;
 	}
 
@@ -148,11 +147,11 @@ export default class Productos extends React.Component{
 
 
 
-	_renderCol(dato){
+	_renderCol(dato, i){
 		dato = ( dato instanceof Product ) ? dato : new Product(dato);
 		let day = moment(dato.data.created_at).format('DD-MM-YYYY');
 		return(
-			<TouchableHighlight onPress={()=>{ this.props.navigation.navigate('PorProducto', { titulo: 'EDITAR: '+dato.data.name, product: dato.data, onDelete: this._onDelete }) }}>
+			<TouchableHighlight key={i} onPress={()=>{ this.props.navigation.navigate('PorProducto', { titulo: 'EDITAR: '+dato.data.name, product: dato.data, onDelete: this._onDelete }) }}>
 			<Col style={{width: "100%"}}>
 				<Card style={{flex: 0}}>
 					<CardItem cardBody>
@@ -184,7 +183,7 @@ export default class Productos extends React.Component{
 			if( products.length >0){
 				const cards = products.map( ( dato, i ) =>{
 
-					return this._renderCol( dato )
+					return this._renderCol( dato, i )
 				});
 				return cards;
 			}

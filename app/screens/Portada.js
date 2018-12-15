@@ -49,6 +49,8 @@ var ImagePicker = require('react-native-image-picker');
 
 var options = {
   title: 'Selecciona una opción',
+	takePhotoButtonTitle: 'Tomar desde la camara',
+	chooseFromLibraryButtonTitle: 'Elegir una desde la galeria',
   storageOptions: {
     skipBackup: true,
     path: 'images'
@@ -203,7 +205,7 @@ export default class Portada extends React.Component{
 				if(images.self.length > 0){
 					let imgSrc = ( (images.self.length - 1) < 0 ) ? images.self[0] : images.self[ (images.self.length - 1) ];
 					
-					let url = con.getProtocol()+'//'+con.getOnlyUrl()+'/'+imgSrc.cover_url;
+					let url = imgSrc.cover_url;
 					
 					portada = { uri: url };
 					//Alert.alert('URL', JSON.stringify(portada));
@@ -249,8 +251,9 @@ export default class Portada extends React.Component{
 							</Col>
 						</Row>
 			          <Fab
+			          	disabled={this.state.nueva_imagen ? false : true}
 			            containerStyle={{ }}
-			            style={{ backgroundColor: '#02A6A4' }}
+			            style={{ backgroundColor: this.state.nueva_imagen ? '#02A6A4' : 'gray' }}
 			            position="bottomRight"
 			            onPress={() => { this.setState({ onSavePress: true }); this.save(); } }>
 
