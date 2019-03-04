@@ -467,7 +467,7 @@ export default class FormEvent extends React.Component{
 							</Row>
 						</Grid>
 						<Row>
-							<Col style={{width: "95%"}}>
+							<Col style={{width: "95%", marginTop: 15}}>
 								<Item floatingLabel>
 									<Label style={{ color: "#ffffff" }}>Detalles</Label>
 									<Input  style={{ color: "#ffffff" }} value={this.state.description} onChangeText={text=>{ this.setState({description: this.state.event.setAttribute('description', text)}); }} multiline={true} numberOfLines={4} />

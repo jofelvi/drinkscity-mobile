@@ -51,7 +51,7 @@ export default class Botonera extends React.Component{
 		if( this.state.user !== null ){
 			if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin' ){
 				cmr = (
-					<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('Videos') }} style={{alignSelf: "center", alignItems: "center", alignContent: "center", marginBottom: "7%"}}>
+					<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('Videos') }} >
 						<BackgroundButton 
 							imagen={require('../assets/img/banda.png')} 
 							text={'VIDEO'} 
@@ -66,24 +66,25 @@ export default class Botonera extends React.Component{
 				qr = (
 					<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('QRScanner') }} style={{marginBottom: "7%"}}>
 						<BackgroundButton 
-							imagen={require('../assets/img/banda.png')} 
+							// imagen={require('../assets/img/banda.png')} 
 							text={'ESCANEAR'} 
 							font_size={17}
+							icon={require('../assets/img/banda.png')}
 						/>
 					</TouchableOpacity>	
 				)
 			}
-			if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin'  ){
-				s = (
-					<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('Streaming') }} style={{marginBottom: "7%"}}>
-						<BackgroundButton 
-							imagen={require('../assets/img/banda.png')} 
-							text={'STREAMING'} 
-							font_size={17}
-						/>
-					</TouchableOpacity>	
-				)
-			}	
+			// if( this.state.user.role == 'validator' || this.state.user.role == 'store_admin'  ){
+			// 	s = (
+			// 		<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('Streaming') }} style={{marginBottom: "7%"}}>
+			// 			<BackgroundButton 
+			// 				imagen={require('../assets/img/banda.png')} 
+			// 				text={'STREAMING'} 
+			// 				font_size={17}
+			// 			/>
+			// 		</TouchableOpacity>	
+			// 	)
+			// }	
 			if( this.state.user.role == 'store_admin' ){
 				productos = (
 
@@ -192,53 +193,46 @@ export default class Botonera extends React.Component{
 				
 			>
 					<Grid>
-						<Row>
-							<Col>
+						<Row style={{justifyContent: 'center', alignItems: 'center'}}>
 								{qr}
+						</Row>
+
+						<Row style={{marginBottom: 30}}>
+							<Col style={{justifyContent: 'center', alignItems: 'center'}}>
+								{productos}
 							</Col>
-							<Col>
-								{s}
+							<Col style={{justifyContent: 'center', alignItems: 'center'}}>
+								{cmr}
 							</Col>
 						</Row>
-					</Grid>
-					<Grid>
 
-						<Col>
-							<Row style={{alignContent: "center", alignItems: "center"}}>
-								{productos}
-							</Row>
-							<Row style={{alignContent: "center", alignItems: "center", marginTop: "9%"}}>
-
+						<Row style={{marginBottom: 30}}>
+							<Col style={{justifyContent: 'center', alignItems: 'center'}}>
 								{mis_productos}
-							</Row>
-							<Row style={{alignContent: "center", alignItems: "center", marginTop: "9%"}}>
-								{funcionarios}
-							</Row>
-							<Row style={{alignContent: "center", alignItems: "center", marginTop: "9%"}}>
-								{mis_funcionarios}
-							</Row>
-						</Col>
-						<Col>
-							<Row style={{alignContent: "center", alignItems: "center"}}>
-								{cmr}
-							</Row>
-							<Row style={{alignContent: "center", alignItems: "center"}}>
+							</Col>
+							<Col style={{justifyContent: 'center', alignItems: 'center'}}>
 								{eventos}
-							</Row>
+							</Col>
+						</Row>
 
-
-							<Row style={{alignContent: "center", alignItems: "center"}}>
-								{rrpp_eventos}
-							</Row>
-
-							<Row style={{alignContent: "center", alignItems: "center",  marginTop: "9%"}}>
+						<Row style={{marginBottom: 30}}>
+							<Col style={{justifyContent: 'center', alignItems: 'center'}}>
+								{funcionarios}
+							</Col>
+							<Col style={{justifyContent: 'center', alignItems: 'center'}}>
 								{mis_eventos}
-							</Row>
-							<Row style={{alignContent: "center", alignItems: "center",  marginTop: "9%"}}>
-								{ventas}
-							</Row>
-						</Col>
+							</Col>
+						</Row>
 
+
+						<Row style={{marginBottom: 30}}>
+							<Col style={{justifyContent: 'center', alignItems: 'center'}}>
+								{mis_funcionarios}
+							</Col>
+							<Col style={{justifyContent: 'center', alignItems: 'center'}}>
+								{rrpp_eventos || ventas}
+							</Col>
+						</Row>
 					</Grid>
 			</View>
 		);

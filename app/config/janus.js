@@ -1,6 +1,6 @@
 
 const config = {
-    JanusWssHost: 'https://janus.conf.meetecho.com/janus',
+    JanusWssHost: 'http://18.219.38.251:8088/janus',
 };
   
 export default config;

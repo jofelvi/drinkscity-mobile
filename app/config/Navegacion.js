@@ -8,6 +8,8 @@ import Funcionarios from '../screens/Funcionarios';
 import AboutFuncionario from '../screens/AboutFuncionario';
 import QRScaner from '../screens/QRScaner';
 import Streaming from '../screens/Streaming';
+import Transmit from '../screens/Transmit';
+import Receive from '../screens/Receive';
 import VideoDetail from '../screens/VideoDetail';
 import onQRScann from '../screens/onQRScann';
 import Videos from '../screens/Videos';
@@ -76,6 +78,12 @@ const Navigation = StackNavigator({
 	},
 	Streaming:{
 		screen: Streaming
+	},
+	Transmit:{
+		screen: Transmit
+	},
+	Receive:{
+		screen: Receive
 	},
 	VideoDetail: {
 		screen: VideoDetail
