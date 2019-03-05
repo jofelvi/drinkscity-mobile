@@ -38,7 +38,6 @@ export default class Product extends Model{
 			'stock',
 			'start_datetime',
 			'end_datetime',
-			'category',
 			'priority',
 			'user_id',
 			'item_id',
@@ -54,7 +53,7 @@ export default class Product extends Model{
 		 */
 		this.data_type = {
 			name : { type: 'string', required: true, alias: "Titulo del aviso" }, 
-			category : {type: 'integer', required: false, alias: 'Categoria'},
+			category : {type: 'string', required: false, alias: 'Categoria'},
 			description: {type: 'string', required: true, alias: 'Detalles'},
 			price : {type: 'float', required: true, alias: 'Precio'},
 			stock : {type: 'integer', required: true, alias: 'Stock'},
@@ -121,7 +120,6 @@ export default class Product extends Model{
 			delete data['image'];
 			this.data = data;
 			super.update(method,model, id, navigation)
-		}
-		
+		}	
 	}
 }

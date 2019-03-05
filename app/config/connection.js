@@ -14,7 +14,7 @@ export default class Connection{
 			onlyUrl: 'drinkscitys.herokuapp.com',
 			onSession: false,
 			token: null,
-			google_api_key: 'AIzaSyDdzklbLf_ANmGOWEfDNtNVLFMqNy65yBA'
+			google_api_key: 'AIzaSyDypc4l6iC9ixJBREWwMAIOXhjwUVyj3OI'
 		}
 		// this.data = {
 		// 	protocol: 'http:',

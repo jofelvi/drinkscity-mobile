@@ -53,11 +53,11 @@ export default class Botonera extends React.Component{
 				cmr = (
 					<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('Videos') }} >
 						<BackgroundButton 
-							imagen={require('../assets/img/banda.png')} 
+							// icon={require('../assets/img/banda.png')} 
 							text={'VIDEO'} 
 							font_size={17}
 							// btnSize={84}
-							// icon={require('../assets/img/qrmini.png')}
+							icon={require('../assets/img/qrmini.png')}
 						/>
 					</TouchableOpacity>	
 				)
@@ -66,7 +66,7 @@ export default class Botonera extends React.Component{
 				qr = (
 					<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('QRScanner') }} style={{marginBottom: "7%"}}>
 						<BackgroundButton 
-							// imagen={require('../assets/img/banda.png')} 
+							// icon={require('../assets/img/banda.png')} 
 							text={'ESCANEAR'} 
 							font_size={17}
 							icon={require('../assets/img/banda.png')}
@@ -78,7 +78,7 @@ export default class Botonera extends React.Component{
 			// 	s = (
 			// 		<TouchableOpacity onPress={()=>{ this.props.navigation.navigate('Streaming') }} style={{marginBottom: "7%"}}>
 			// 			<BackgroundButton 
-			// 				imagen={require('../assets/img/banda.png')} 
+			// 				icon={require('../assets/img/banda.png')} 
 			// 				text={'STREAMING'} 
 			// 				font_size={17}
 			// 			/>
@@ -90,7 +90,7 @@ export default class Botonera extends React.Component{
 
 					<TouchableOpacity onPress={()=>{this.props.navigation.navigate('CrearProductosScreen')}}>
 						<BackgroundButton 
-							imagen={require('../assets/img/banda.png')} 
+							icon={require('../assets/img/banda.png')} 
 							text={'CREAR PRODUCTO'} 
 							font_size={17}
 						/>
@@ -102,7 +102,7 @@ export default class Botonera extends React.Component{
 				mis_productos = (
 								<TouchableOpacity onPress={()=>{this.props.navigation.navigate('Productos', { side: 'Home' })}}>
 									<BackgroundButton 
-										imagen={require('../assets/img/banda.png')} 
+										icon={require('../assets/img/banda.png')} 
 										text={'MIS PRODUCTOS'} 
 										font_size={17}
 									/>
@@ -114,7 +114,7 @@ export default class Botonera extends React.Component{
 				funcionarios = (
 								<TouchableOpacity onPress={()=>{this.props.navigation.navigate('FormFuncionario', {titulo: 'CREAR FUNCIONARIO', accion: 'crear' ,funcionario: false})}}>
 									<BackgroundButton 
-										imagen={require('../assets/img/banda.png')} 
+										icon={require('../assets/img/banda.png')} 
 										text={'CREAR FUNCIONARIOS'} 
 										font_size={17}
 									/>
@@ -126,7 +126,7 @@ export default class Botonera extends React.Component{
 				mis_funcionarios = (
 								<TouchableOpacity onPress={ ()=>{ this.props.navigation.navigate('BtnFuncionarios', {titulo: 'FUNCIONARIOS', funcionario: false}); } }>
 									<BackgroundButton 
-										imagen={require('../assets/img/banda.png')} 
+										icon={require('../assets/img/banda.png')} 
 										text={'MIS FUNCIONARIOS'} 
 										font_size={17}
 									/>
@@ -139,7 +139,7 @@ export default class Botonera extends React.Component{
 				eventos = (
 								<TouchableOpacity onPress={()=>{this.props.navigation.navigate('FormsEvents', {titulo: 'Tipo de evento', side: 'Hone', event: false})}}>
 									<BackgroundButton 
-										imagen={require('../assets/img/banda.png')} 
+										icon={require('../assets/img/banda.png')} 
 										text={'CREAR EVENTO'} 
 										font_size={17}
 									/>
@@ -151,7 +151,7 @@ export default class Botonera extends React.Component{
 				rrpp_eventos = (
 								<TouchableOpacity onPress={()=> { this.props.navigation.navigate('RrppEventos',{titulo: 'Listado de eventos publicados', side: 'Home', event: false}) } }>
 									<BackgroundButton 
-										imagen={require('../assets/img/banda.png')} 
+										icon={require('../assets/img/banda.png')} 
 										text={'MIS EVENTOS'} 
 										font_size={17}
 									/>
@@ -161,9 +161,9 @@ export default class Botonera extends React.Component{
 
 			if( this.state.user.role == 'store_admin'){
 				mis_eventos = (
-								<TouchableOpacity onPress={()=> { this.props.navigation.navigate('Eventos',{titulo: 'Listado de eventos publicados', side: 'Home', event: false}) } }>
+								<TouchableOpacity onPress={()=> { this.props.navigation.navigate('Eventos',{titulo: 'Listado de eventos publicados', side: 'Home', event: false, user: this.state.user}) } }>
 									<BackgroundButton 
-										imagen={require('../assets/img/banda.png')} 
+										icon={require('../assets/img/banda.png')} 
 										text={'MIS EVENTOS'} 
 										font_size={17}
 									/>
@@ -179,7 +179,7 @@ export default class Botonera extends React.Component{
 									}}
 								>
 									<BackgroundButton 
-										imagen={require('../assets/img/banda.png')} 
+										icon={require('../assets/img/banda.png')} 
 										text={'MIS VENTAS'} 
 										font_size={17}
 									/>

@@ -200,14 +200,14 @@ export default class Model{
 		});
 	}
 
-	async getAll(navigation = null){
+	async getAll(navigation = null, param){
 
 		let session = await AsyncStorage.getItem("@session");
 		let token = await JSON.parse(session);
 
 		const con = new Connection();
 		let url = con.getUrlApi(this._model);
-		let req = await fetch(url, {
+		let req = await fetch(`${url}?user_id=${param}`, {
 			method: 'GET',
 			headers: {
 				Accept: 'application/json',

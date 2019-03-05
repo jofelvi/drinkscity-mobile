@@ -68,6 +68,7 @@ export default class PubEstandar extends React.Component{
 		pub = ( producto instanceof Product ) ? producto : new Product(producto);
 		this.state = {
 			image: '',
+			category: '',
 			...producto,
 			stores: [],
 			...pub.data,
@@ -76,7 +77,8 @@ export default class PubEstandar extends React.Component{
 			showPicker: false,
 			from: '',
 			ref_startdatetime: null,
-			ref_enddatetime: null
+			ref_enddatetime: null,
+			savePress: false
 		};
 	}
 
@@ -272,20 +274,21 @@ export default class PubEstandar extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{width: "95%", marginLeft: 10, borderBottomWidth: 1, borderBottomColor: 'white'}} >
+							<Col style={{width: "95%", marginLeft: 10, marginTop: 10, borderBottomWidth: 1, borderBottomColor: 'white'}} >
 								<Picker
 									mode='dropdown'
 									onValueChange={value => { this.state.pub.setAttribute('category', value); this.setState({category: value}); }}
 									style={{ color: this.props.color }}
 									selectedValue={this.state.category}
 								>
-									<Item style={{color: this.props.color }} label='Licores' value={0} /> 
-									<Item style={{color: this.props.color }} label='Cervezas' value={1} />
-									<Item style={{color: this.props.color }} label='Vinos' value={2} />
-									<Item style={{color: this.props.color }} label='Tragos preparados' value={3} />
-									<Item style={{color: this.props.color }} label='Insumos' value={4} />
-									<Item style={{color: this.props.color }} label='Habitaciones' value={5} />
-									<Item style={{color: this.props.color }} label='Comida' value={1} />
+									<Item style={{color: "#ffffff" }} label="Seleccione Una Categoria" value={''} />
+									<Item style={{color: this.props.color }} label='Licores' value={'licores'} />
+									<Item style={{color: this.props.color }} label='Cervezas' value={'cervezas'} />
+									<Item style={{color: this.props.color }} label='Vinos' value={'vinos'} />
+									<Item style={{color: this.props.color }} label='Tragos preparados' value={'tragos_preparados'} />
+									<Item style={{color: this.props.color }} label='Insumos' value={'insumos'} />
+									<Item style={{color: this.props.color }} label='Habitaciones' value={'habitaciones'} />
+									<Item style={{color: this.props.color }} label='Comida' value={'comida'} />
 								</Picker>
 							</Col>
 						</Row>
@@ -361,6 +364,7 @@ export default class PubEstandar extends React.Component{
 					</Content>
 
 					<Button onPress={()=>{ 
+						this.setState({ savePress: true })
 						if(this.props.from != 'Productos')
 							//Alert.alert('DEBUG', JSON.stringify(this.state.pub.data));
 							this.state.pub.push(this.props.navigation) 
@@ -368,8 +372,16 @@ export default class PubEstandar extends React.Component{
 							this.state.pub.update('PUT', 'product', this.state.id, this.props.navigation)
 						}
 					}}  
-					block style={{ backgroundColor: "#02A6A4", marginBottom: 52 }}>
-						<Text style={{color: this.props.color}}>PUBLICAR</Text>
+					block style={{ backgroundColor: "#02A6A4", marginBottom: 52 }}
+					disabled={this.state.savePress}
+					>
+						
+						{
+							this.state.savePress ?
+								<Text style={{color: "#ffffff"}}> GUARDADO </Text>
+							:
+								<Text style={{color: this.props.color}}>PUBLICAR</Text>
+						}
 					</Button>
 				
 			</View>

@@ -72,7 +72,7 @@ export default class ListaEventos extends React.Component{
 			this.setState({
 				eventos: events
 			});
-			//Alert.alert('DE', JSON.stringify(this.state.eventos[5].data.store))
+			// Alert.alert('DE', JSON.stringify(this.state.eventos[5].data.store))
 		});
 
 	}
@@ -90,7 +90,7 @@ export default class ListaEventos extends React.Component{
 		BackHandler.removeEventListener('hardwareBackPress', ()=> true);
 		BackHandler.addEventListener('hardwareBackPress', ()=> this.props.navigation.goBack());
 		let ev = new Event();
-		ev.getAll();
+		ev.getAll(this.props.navigation, this.props.navigation.state.params.user.id);
 	}
 
 	_showVideoByLink(link = null){
