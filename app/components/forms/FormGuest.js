@@ -116,7 +116,7 @@ export default class FormGuest extends React.Component{
           <Form>
             <Grid>
             <Row>
-              <Col style={{width: "95%"}}>
+              <Col style={{width: "95%", marginTop: 20}}>
                 <Item floatingLabel>
                   <Label 
                     style={{ color: "#ffffff" }} >Nombre

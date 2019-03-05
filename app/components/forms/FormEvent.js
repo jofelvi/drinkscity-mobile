@@ -416,7 +416,7 @@ export default class FormEvent extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{width: "95%"}}>
+							<Col style={{width: "95%", marginTop: 20}}>
 								<Item floatingLabel>
 									<Label 
 										style={{ color: "#ffffff" }} >Titulo del Evento
@@ -429,7 +429,7 @@ export default class FormEvent extends React.Component{
 								</Item>
 							</Col>
 						</Row>
-						<Row style={{ marginTop: 10 }}>
+						<Row style={{ marginTop: 20 }}>
 							<Col style={{width: "95%", marginLeft: "2%", borderBottomWidth: 1, borderBottomColor: 'white'}}>
 								<Label style={{ color: "#ffffff", marginLeft: 7}}>Categoria</Label>
 								<Picker
@@ -458,7 +458,7 @@ export default class FormEvent extends React.Component{
 						</Row>
 						<Grid>
 							<Row>
-								<Col style={{width: "95%", marginTop: 10}}>
+								<Col style={{width: "95%", marginTop: 20}}>
 									<Label style={{ color: "#ffffff", marginLeft: 14 }}>Dirección</Label>
 									<View style={{marginLeft: 14, alignSelf: "center", alignContent: "center", alignItems: "center", borderBottomWidth:1, borderBottomColor: 'white'}} >
 										<GooglePlacesInput onDirectionSelect={this.getGoogleDescription} />
@@ -467,7 +467,7 @@ export default class FormEvent extends React.Component{
 							</Row>
 						</Grid>
 						<Row>
-							<Col style={{width: "95%", marginTop: 15}}>
+							<Col style={{width: "95%", marginTop: 20}}>
 								<Item floatingLabel>
 									<Label style={{ color: "#ffffff" }}>Detalles</Label>
 									<Input  style={{ color: "#ffffff" }} value={this.state.description} onChangeText={text=>{ this.setState({description: this.state.event.setAttribute('description', text)}); }} multiline={true} numberOfLines={4} />
@@ -475,7 +475,7 @@ export default class FormEvent extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{width: "95%"}}>
+							<Col style={{width: "95%", marginTop: 20}}>
 								<Item floatingLabel>
 									<Label style={{ color: "#ffffff" }}>Video Promocional (Link)</Label>
 									<Input 
@@ -487,7 +487,7 @@ export default class FormEvent extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{ width: "95%" }}>
+							<Col style={{ width: "95%", marginTop: 20 }}>
 								<Item floatingLabel>
 									<Label style={{ color: "#ffffff" }}>Fecha y hora del evento</Label>
 									<Input 
@@ -501,7 +501,7 @@ export default class FormEvent extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{ width: "95%" }}>
+							<Col style={{ width: "95%", marginTop: 20 }}>
 								<Item floatingLabel>
 									<Label style={{ color: "#ffffff" }}>Fecha y hora de fin</Label>
 									<Input 

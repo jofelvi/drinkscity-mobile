@@ -274,7 +274,7 @@ export default class PubEstandar extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{width: "95%", marginLeft: 10, marginTop: 10, borderBottomWidth: 1, borderBottomColor: 'white'}} >
+							<Col style={{width: "95%", marginLeft: 10, marginTop: 20, borderBottomWidth: 1, borderBottomColor: 'white'}} >
 								<Picker
 									mode='dropdown'
 									onValueChange={value => { this.state.pub.setAttribute('category', value); this.setState({category: value}); }}
@@ -293,7 +293,7 @@ export default class PubEstandar extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{width: "98%"}}>
+							<Col style={{width: "98%", marginTop: 20}}>
 								<Item floatingLabel>
 									<Label style={{ color: this.props.color }}>Detalles</Label>
 									<Input  style={{ color: this.props.color }} value={this.state.description} onChangeText={text=>{ this.setState({description: this.state.pub.setAttribute('description', text)}); }} multiline={true} numberOfLines={4} />
@@ -301,7 +301,7 @@ export default class PubEstandar extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{ width: "49%" }} >
+							<Col style={{ width: "49%", marginTop: 20 }} >
 								<Item floatingLabel>
 									<Label style={{ color: this.props.color }}>Stock</Label>
 									<Input 
@@ -311,7 +311,7 @@ export default class PubEstandar extends React.Component{
 									/>
 								</Item>
 							</Col>
-							<Col style={{width: "49%"}}>
+							<Col style={{width: "49%", marginTop: 20}}>
 								<Item floatingLabel>
 									<Label style={{ color: this.props.color }}>Precio $</Label>
 									<Input 
@@ -323,7 +323,7 @@ export default class PubEstandar extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{width: "95%"}}>
+							<Col style={{width: "95%", marginTop: 20}}>
 								<Item floatingLabel>
 									<Label style={{ color: this.props.color }}>Fecha y hora de inicio</Label>
 									<Input 
@@ -337,7 +337,7 @@ export default class PubEstandar extends React.Component{
 							</Col>
 						</Row>
 						<Row>
-							<Col style={{width: "95%"}}>
+							<Col style={{width: "95%", marginTop: 20}}>
 								<Item floatingLabel>
 									<Label style={{ color: this.props.color }}>Fecha y hora de fin</Label>
 									<Input 

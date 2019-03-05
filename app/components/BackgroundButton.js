@@ -33,8 +33,8 @@ export default class BackgroundButton extends React.Component {
 				style={{
 					flex: 1,
 					backgroundColor: 'transparent',
-					width:  (!this.props.icon)? 162: 190,
-					height: (!this.props.icon)? 35 : 63,
+					width:  (!this.props.icon)? 190: 150,
+					height: (!this.props.icon)? 65 : 55,
 					borderRadius: 15
 				}}
 			>

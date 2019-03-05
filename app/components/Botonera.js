@@ -69,7 +69,7 @@ export default class Botonera extends React.Component{
 							// icon={require('../assets/img/banda.png')} 
 							text={'ESCANEAR'} 
 							font_size={17}
-							icon={require('../assets/img/banda.png')}
+							image={require('../assets/img/banda.png')}
 						/>
 					</TouchableOpacity>	
 				)
