@@ -249,7 +249,8 @@ export default class FormEvent extends React.Component{
 		const marks = markers.map((data, i) =>{
 			if( i > 0)
 			{
-				return <Marker 
+				return <Marker
+						key={i}
 						draggable={ (i > 0) } 
 						onDragEnd={ coords =>{this._onDragMarker(coords)} } 
 						coordinate={{...data}}
@@ -336,8 +337,7 @@ export default class FormEvent extends React.Component{
 
 	_renderImages(){
 		let { images, event } = this.state;
-		// alert(JSON.stringify(event.data.images.self))
-		let values = (event && event.data && event.data.images) ? event.data.images.self : images
+		let values = (event && event.data && event.data.images) ? event.data.images : images
 		let items = null;
 			items = values.map( (data, i)=>{
 				return (

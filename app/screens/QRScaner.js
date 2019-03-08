@@ -34,7 +34,7 @@ export default class QRScaner extends Component {
 	static navigationOptions = ({navigation}) => ({
 		headerTintColor: "#ffffff",
 		headerStyle: { backgroundColor: "#01DAC9" },
-		title: 'Validacion de orden mediante QR'
+		title: 'VALIDAR CODIGO QR'
 	});
 
   constructor(props){

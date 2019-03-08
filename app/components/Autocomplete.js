@@ -33,7 +33,7 @@ const GooglePlacesInput = ( props ) => {
       minLength={2} // minimum length of text to search
       autoFocus={false}
       returnKeyType={'search'} // Can be left out for default return key https://facebook.github.io/react-native/docs/textinput.html#returnkeytype
-      listViewDisplayed={true}    // true/false/undefined
+      listViewDisplayed={false}    // true/false/undefined
       fetchDetails={true}
       renderDescription={row => row.description} // custom description render
       onPress={(data, details = null) => { // 'details' is provided when fetchDetails = true
@@ -45,7 +45,7 @@ const GooglePlacesInput = ( props ) => {
       poweredContainer={false}
       query={{
         // available options: https://developers.google.com/places/web-service/autocomplete
-        key: 'AIzaSyDdzklbLf_ANmGOWEfDNtNVLFMqNy65yBA',
+        key: 'AIzaSyDypc4l6iC9ixJBREWwMAIOXhjwUVyj3OI',
         language: 'es', // language of the results
         types: 'address', // default: 'geocode'
         'location': props.latitude+','+props.longitude
@@ -65,8 +65,7 @@ const GooglePlacesInput = ( props ) => {
           color: '#ffffff'
         },
         listView:{
-        	color :"#111111",
-          backgroundColor: '#111111'
+          backgroundColor: 'white'
         },
         textInput: {
           marginLeft: 0,
